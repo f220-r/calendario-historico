@@ -1,0 +1,34 @@
+{
+  "celebraciones": [
+    "Día del Profesor",
+    "Día Internacional de la música Country",
+    "Día de la Constitución en Estados Unidos",
+    "Día Mundial de la Seguridad del Paciente",
+    "Día Mundial del Síndrome de Kleefstra",
+    "Día del Psicopedagogo"
+  ],
+  "acontecimientos": [
+    "·         1683 – El científico holandés Antoine van Leeywenhoek es el primero en informar sobre la existencia de bacterias.",
+    "·         1869 – Primer censo nacional",
+    "·         1978 – Se firman los acuerdos de Camp David",
+    "·         1980 – Asesinato de Anastasio Somoza en Asunción. Ex dictador nicaragüense muere en Asunción en un atentado que llevan a cabo miembros del ERp liderados por Gorriarán Merlo",
+    "·         1991 – Los Guns N’ Roses lanzan su álbum Use Your Illusion/ Use Your Illusion II",
+    "·         2000 – Lionel Messi llega a Barcelona para probarse en el Barcelona Footbal Club",
+    "·         2006 – Sergio Kun Agüero debuta como titular en el Atlético de Madrid",
+    "·         2013 – Rockstar lanza al mercado el videojuego GTA V",
+    "·         2020 – Racing Club se convierte en el primer equipo argentino en jugar un partido oficial, tras el aislamiento decretado por el coronavirus."
+  ],
+  "nacimientos": [
+    "·         1931 – Anne Bancroft, actriz estadounidense",
+    "·         1935 – Ken Kesey, escritor estadounidense, considerado el padre del LSD",
+    "·         1945 – Phil Jackson, entrenador de baloncesto estadounidense",
+    "·         1968 – Tito Vilanova, futbolista y entrenador de fútbol español"
+  ],
+  "fallecimientos": [
+    "·         1894 – José Manuel Estrada, profesor, político y escritor argentino",
+    "·         1980 – Anastasio “Tachito” Somoza, último dictador de Nicaragua",
+    "·         2008 – Jean Pigaet, epistemólogo y biólogo especializado en estudios sobre la niñez",
+    "·         2014 – China Zorrilla, actriz argentina",
+    "·         2015 – Pablo Rieznik, político, profesor universitario e investigador argentino"
+  ]
+}
