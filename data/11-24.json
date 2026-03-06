@@ -1,0 +1,33 @@
+{
+  "celebraciones": [
+    "Día mundial del Vino Tinto",
+    "Día de la Evolución",
+    "Día Nacional del Vino Argentino",
+    "Día del Trabajador Plástico"
+  ],
+  "acontecimientos": [
+    "1822 - en el marco de las guerras civiles argentinas, las provincias de Buenos Aires y Santa Fe celebran el Tratado de Benegas.",
+    "1849 - Inglaterra firma un convenio con la Provincia de Buenos Aires (gobernada por Juan Manuel de Rosas) por el cual se retira del bloqueo del Río de la Plata, que realizaba junto a Francia.",
+    "1859 - En Londres se publica el libro El origen de las especies, de Charles Darwin.",
+    "1969 - el Apolo 12 ameriza en el Océano Pacífico, finalizando la cuarta misión tripulada a la Luna, y la segunda en descender a su superficie."
+  ],
+  "nacimientos": [
+    "1632 – el filósofo neerlandés Baruch Spinoza.",
+    "1882 – el escritor y poeta español Rafael Cansinos Assens.",
+    "1888 – el escritor y empresario estadounidense Dale Carnegie.",
+    "1908 – la actriz y cantante argentina Libertad Lamarque.",
+    "1941 – el músico británico Pete Best, primer baterista de The Beatles.",
+    "1946 – el asesino serial estadounidense Ted Bundy.",
+    "1954 – el cineasta y músico serbio Emir Kusturica.",
+    "1965 – la actriz escocesa Shirley Henderson.",
+    "1970 – la cantante y actriz mexicana Julieta Venegas.",
+    "1977 – el actor estadounidense Colin Hanks.",
+    "1978 – la actriz estadounidense Katherine Heigl.",
+    "1986 – la actriz argentina Micaela Vázquez."
+  ],
+  "fallecimientos": [
+    "1957 – Muere el pintor mexicano Diego Rivera.",
+    "1991 – Muere el músico y cantante británico Freddie Mercury, líder de Queen.",
+    "2002 – Muere el filósofo estadounidense John Rawls."
+  ]
+}

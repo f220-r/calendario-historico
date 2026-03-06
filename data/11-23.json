@@ -1,0 +1,30 @@
+{
+  "celebraciones": [
+    "Día Mundial de Fibonacci",
+    "Día Mundial del Café Expreso",
+    "Día Internacional del Asesor de Imagen",
+    "Día Internacional de la Palabra",
+    "Día Nacional de la Defensa Civil"
+  ],
+  "acontecimientos": [
+    "1851 - el escritor y polígrafo venezolano Andrés Bello es nombrado correspondiente de la Real Academia Española por su Gramática de la lengua castellana.",
+    "1963 - en Reino Unido, el canal BBC Television estrena el primer episodio de Doctor Who, la serie de televisión de ciencia ficción más longeva de la historia.",
+    "1977 – En la provincia de San Juan, Argentina, ocurre el terremoto de Caucete. Deja un total de 65 víctimas.",
+    "1991 - en Londres, Freddie Mercury anuncia al mundo que es portador del virus VIH.",
+    "2024 - en Asunción , Racing Club de Argentina vence 3–1 a Cruzeiro de Brasil en el Estadio General Pablo Rojas, y se consagra campeón de la Copa Sudamericana 2024."
+  ],
+  "nacimientos": [
+    "1887 – el actor británico Boris Karloff.",
+    "1941 – el músico y compositor argentino Oscar Alem.",
+    "1962 – el político venezolano Nicolás Maduro.",
+    "1963 – la actriz mexicana Erika Buenfil.",
+    "1983 – el actor y cantante argentino Gastón Dalmau.",
+    "1992 – la actriz y cantante estadounidense Miley Cyrus."
+  ],
+  "fallecimientos": [
+    "1958 – el escritor y guionista estadounidense Johnston McCulley, creador del personaje El Zorro.",
+    "1990 – el escritor y poeta británico Roald Dahl, autor del libro Charlie y la fábrica de chocolate.",
+    "1991 – el actor alemán Klaus Kinski.",
+    "2004 – Muere el periodista y conductor argentino Adolfo Castelo."
+  ]
+}

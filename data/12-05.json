@@ -1,0 +1,29 @@
+{
+  "celebraciones": [
+    "Día Internacional del Voluntario",
+    "Día Internacional del Suelo",
+    "Día Nacional del Ciclista"
+  ],
+  "acontecimientos": [
+    "1830 – Se estrena la Sinfonía Fantástica de Hector Berlioz en París, una obra clave del Romanticismo.",
+    "1951 – Racing Club de Avellaneda derrota a Banfield por 1-0 en la final del Campeonato de Primera División, consagrándose tricampeón del fútbol argentino.",
+    "1983 – Se disuelve la Junta Militar argentina. El general Reynaldo Bignone es nombrado presidente provisional hasta que asuma Raúl Alfonsín",
+    "2000 – Manuel López Obrador asume la presidencia de México",
+    "2007 – El club Arsenal de Sarandí obtiene la Copa Sudamericana, el primer título internacional de su historia.",
+    "2008 – El equipo Honda se retira de la Fórmula 1",
+    "2021 – Se celebra el primer Gran Premio de Arabia Saudita, de la Fórmula 1"
+  ],
+  "nacimientos": [
+    "1946 – José Carreras, tenor español",
+    "1947 – Egberto Gismonti, compositor y músico brasileño",
+    "1947 – Alberto Nisman, abogado penalista",
+    "1981 – Valeria Gastaldi, actriz y cantante argentina.",
+    "1983 – Mariano Martínez, actor argentino"
+  ],
+  "fallecimientos": [
+    "1791 – Wolfgang Amadeus Mozart, compositor, pianista, director de orquesta y profesor de origen austriaco",
+    "1926 – Claude Monet, pintor francés y uno de los iniciadores del impresionismo",
+    "1991 – Oreste Corbatta, exjugador de fútbol argentino e ídolo del Racing Club de Avellaneda",
+    "2013 – Nelson Mandela, presidente de Sudáfrica de 1994 a 1999 y Premio Nóbel de la Paz"
+  ]
+}
