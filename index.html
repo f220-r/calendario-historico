@@ -4,29 +4,119 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calendario Histórico</title>
+
 <style>
-body{font-family:Arial,Helvetica,sans-serif;background:#f4f6f8;margin:0;padding:20px}
-header{display:flex;justify-content:space-between;align-items:center;max-width:900px;margin:auto;margin-bottom:20px}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#f4f6f8;
+margin:0;
+padding:20px
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:900px;
+margin:auto;
+margin-bottom:20px
+}
+
 button{cursor:pointer}
-#calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;max-width:900px;margin:auto}
-.day{background:white;padding:15px;border-radius:8px;text-align:center;cursor:pointer;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
-.day.today{border:2px solid #4a90e2}
-.day:hover{background:#eef4ff}
 
-#modal{position:fixed;top:0;left:0;width:100%;height:100%;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.45)}
-#modalContent{background:white;border-radius:10px;width:600px;max-width:90%;padding:20px}
-#close{float:right;font-size:20px;cursor:pointer}
+#calendar{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:8px;
+max-width:900px;
+margin:auto
+}
 
-.tabs{display:flex;gap:10px;margin-top:10px}
-.tab{padding:6px 10px;border-radius:6px;background:#e9eef6}
-.tab.active{background:#4a90e2;color:white}
+.day{
+background:white;
+padding:15px;
+border-radius:8px;
+text-align:center;
+cursor:pointer;
+box-shadow:0 2px 4px rgba(0,0,0,0.1)
+}
 
-.list{margin-top:10px}
-textarea{width:100%;height:120px}
-.hidden{display:none}
-.controls{margin-top:10px;display:flex;gap:10px}
+.day.today{
+border:2px solid #4a90e2
+}
+
+.day:hover{
+background:#eef4ff
+}
+
+#modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:none;
+align-items:center;
+justify-content:center;
+background:rgba(0,0,0,0.45)
+}
+
+#modalContent{
+background:white;
+border-radius:10px;
+width:600px;
+max-width:90%;
+padding:20px;
+max-height:80vh;
+overflow-y:auto;
+}
+
+#close{
+float:right;
+font-size:20px;
+cursor:pointer
+}
+
+.tabs{
+display:flex;
+gap:10px;
+margin-top:10px
+}
+
+.tab{
+padding:6px 10px;
+border-radius:6px;
+background:#e9eef6
+}
+
+.tab.active{
+background:#4a90e2;
+color:white
+}
+
+.list{
+margin-top:10px
+}
+
+textarea{
+width:100%;
+height:120px
+}
+
+.hidden{
+display:none
+}
+
+.controls{
+margin-top:10px;
+display:flex;
+gap:10px
+}
+
 </style>
 </head>
+
 <body>
 
 <header>
@@ -38,15 +128,31 @@ textarea{width:100%;height:120px}
 <div id="calendar"></div>
 
 <div id="modal">
+
 <div id="modalContent">
+
 <span id="close">&times;</span>
+
 <h3 id="modalDate"></h3>
 
 <div class="tabs">
-<button class="tab" onclick="selectTab('celebrations')">Celebraciones</button>
-<button class="tab" onclick="selectTab('events')">Acontecimientos</button>
-<button class="tab" onclick="selectTab('births')">Nacimientos</button>
-<button class="tab" onclick="selectTab('deaths')">Fallecimientos</button>
+
+<button class="tab" onclick="selectTab('celebraciones')">
+Celebraciones
+</button>
+
+<button class="tab" onclick="selectTab('acontecimientos')">
+Acontecimientos
+</button>
+
+<button class="tab" onclick="selectTab('nacimientos')">
+Nacimientos
+</button>
+
+<button class="tab" onclick="selectTab('fallecimientos')">
+Fallecimientos
+</button>
+
 </div>
 
 <div id="display" class="list"></div>
@@ -56,187 +162,256 @@ textarea{width:100%;height:120px}
 </div>
 
 <div class="controls">
+
 <button id="editBtn">Editar</button>
+
 <button id="saveBtn" class="hidden">Guardar</button>
+
 <button id="cancelBtn" class="hidden">Cancelar</button>
+
 </div>
 
 </div>
 </div>
 
 <script>
-let baseData={};
-let data={};
-let currentDate=new Date();
-let selectedKey=null;
-let selectedCategory='celebrations';
 
-const meses=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+let currentDate=new Date()
 
-async function loadData(){
-try{
-const res=await fetch('data.json');
-baseData=await res.json();
-}catch(e){
-baseData={};
-}
+let selectedKey=null
+let selectedCategory='celebraciones'
+let currentData=null
 
-const local=localStorage.getItem('historyCalendarData');
-if(local){
-data=JSON.parse(local);
-}else{
-data=baseData;
-}
-renderCalendar();
-}
-
-function saveLocal(){
-localStorage.setItem('historyCalendarData',JSON.stringify(data));
-}
+const meses=[
+"Enero","Febrero","Marzo","Abril",
+"Mayo","Junio","Julio","Agosto",
+"Septiembre","Octubre","Noviembre","Diciembre"
+]
 
 function renderCalendar(){
-const calendar=document.getElementById('calendar');
-calendar.innerHTML='';
 
-const year=currentDate.getFullYear();
-const month=currentDate.getMonth();
+const calendar=document.getElementById('calendar')
+calendar.innerHTML=''
 
-const firstDay=new Date(year,month,1).getDay();
-const days=new Date(year,month+1,0).getDate();
+const year=currentDate.getFullYear()
+const month=currentDate.getMonth()
 
-// solo mostramos el mes
+const firstDay=new Date(year,month,1).getDay()
+const days=new Date(year,month+1,0).getDate()
 
-document.getElementById('monthLabel').innerText=meses[month];
+document.getElementById('monthLabel').innerText=meses[month]
 
 for(let i=0;i<firstDay;i++){
-const blank=document.createElement('div');
-calendar.appendChild(blank);
+calendar.appendChild(document.createElement('div'))
 }
 
 for(let d=1;d<=days;d++){
-const cell=document.createElement('div');
-cell.className='day';
-cell.innerText=d;
 
-const today=new Date();
-if(d===today.getDate()&&month===today.getMonth()){
-cell.classList.add('today');
+const cell=document.createElement('div')
+
+cell.className='day'
+cell.innerText=d
+
+const today=new Date()
+
+if(
+d===today.getDate() &&
+month===today.getMonth()
+){
+cell.classList.add('today')
 }
 
-cell.onclick=()=>openDay(month,d);
-calendar.appendChild(cell);
+cell.onclick=()=>openDay(month,d)
+
+calendar.appendChild(cell)
+
 }
+
 }
 
 function changeMonth(offset){
-currentDate.setMonth(currentDate.getMonth()+offset);
-renderCalendar();
+
+currentDate.setMonth(
+currentDate.getMonth()+offset
+)
+
+renderCalendar()
+
 }
 
 function keyFromDate(month,day){
-return String(day).padStart(2,'0')+'-'+String(month+1).padStart(2,'0');
+
+return String(month+1).padStart(2,'0')
++'-'
++String(day).padStart(2,'0')
+
 }
 
-function openDay(month,day){
-selectedKey=keyFromDate(month,day);
+async function loadDayFile(key){
 
-if(!data[selectedKey]){
-data[selectedKey]={celebrations:[],events:[],births:[],deaths:[]};
+try{
+
+const res=await fetch(`data/${key}.json`)
+
+if(!res.ok) throw new Error()
+
+return await res.json()
+
 }
 
-const modal=document.getElementById('modal');
-modal.style.display='flex';
+catch{
 
-// formato español: 5 de diciembre
-const nombreMes=meses[month].toLowerCase();
-document.getElementById('modalDate').innerText=`${day} de ${nombreMes}`;
+return{
+celebraciones:[],
+acontecimientos:[],
+nacimientos:[],
+fallecimientos:[]
+}
 
-selectTab('celebrations');
+}
+
+}
+
+async function openDay(month,day){
+
+selectedKey=keyFromDate(month,day)
+
+currentData=await loadDayFile(selectedKey)
+
+const modal=document.getElementById('modal')
+modal.style.display='flex'
+
+const nombreMes=meses[month].toLowerCase()
+
+document.getElementById('modalDate').innerText=
+`${day} de ${nombreMes}`
+
+selectTab('celebraciones')
+
 }
 
 function selectTab(cat){
-selectedCategory=cat;
 
-const tabs=document.querySelectorAll('.tab');
-tabs.forEach(t=>t.classList.remove('active'));
+selectedCategory=cat
 
-const btn=[...tabs].find(b=>b.innerText.toLowerCase().includes(cat==='events'?'acontec':cat==='births'?'nacim':cat==='deaths'?'fallec':'celebra'));
-if(btn)btn.classList.add('active');
+const tabs=document.querySelectorAll('.tab')
 
-updateDisplay();
+tabs.forEach(
+t=>t.classList.remove('active')
+)
+
+const map={
+celebraciones:0,
+acontecimientos:1,
+nacimientos:2,
+fallecimientos:3
+}
+
+tabs[map[cat]].classList.add('active')
+
+updateDisplay()
+
 }
 
 function updateDisplay(){
-const display=document.getElementById('display');
-const editor=document.getElementById('editor');
 
-editor.classList.add('hidden');
-display.classList.remove('hidden');
+const display=document.getElementById('display')
+const editor=document.getElementById('editor')
 
-const list=data[selectedKey][selectedCategory];
+editor.classList.add('hidden')
+display.classList.remove('hidden')
 
-if(!list||list.length===0){
-display.innerHTML='No hay datos todavía.';
-return;
+const list=currentData[selectedCategory]
+
+if(!list || list.length===0){
+
+display.innerHTML='No hay datos todavía.'
+
+return
+
 }
 
-display.innerHTML='<ul>'+list.map(i=>`<li>${i}</li>`).join('')+'</ul>';
+display.innerHTML=
+'<ul>'+
+list.map(i=>`<li>${i}</li>`).join('')
++'</ul>'
+
 }
 
 function startEdit(){
-const editor=document.getElementById('editor');
-const display=document.getElementById('display');
 
-editor.classList.remove('hidden');
-display.classList.add('hidden');
+const editor=document.getElementById('editor')
+const display=document.getElementById('display')
 
-const list=data[selectedKey][selectedCategory]||[];
-document.getElementById('editArea').value=list.join('\n');
+editor.classList.remove('hidden')
+display.classList.add('hidden')
 
-editBtn.classList.add('hidden');
-saveBtn.classList.remove('hidden');
-cancelBtn.classList.remove('hidden');
+const list=currentData[selectedCategory]||[]
+
+document.getElementById('editArea').value=
+list.join('\n')
+
+editBtn.classList.add('hidden')
+saveBtn.classList.remove('hidden')
+cancelBtn.classList.remove('hidden')
+
 }
 
 function saveEdit(){
-const txt=document.getElementById('editArea').value;
-const items=txt.split('\n').map(t=>t.trim()).filter(t=>t);
 
-data[selectedKey][selectedCategory]=items;
+const txt=document.getElementById('editArea').value
 
-saveLocal();
-stopEdit();
-updateDisplay();
+const items=txt
+.split('\n')
+.map(t=>t.trim())
+.filter(t=>t)
+
+currentData[selectedCategory]=items
+
+stopEdit()
+
+updateDisplay()
+
+alert(
+'Los cambios se guardaron solo en memoria. Para persistirlos debes editar el archivo JSON.'
+)
+
 }
 
 function stopEdit(){
-editBtn.classList.remove('hidden');
-saveBtn.classList.add('hidden');
-cancelBtn.classList.add('hidden');
 
-document.getElementById('editor').classList.add('hidden');
-document.getElementById('display').classList.remove('hidden');
+editBtn.classList.remove('hidden')
+saveBtn.classList.add('hidden')
+cancelBtn.classList.add('hidden')
+
+document.getElementById('editor')
+.classList.add('hidden')
+
+document.getElementById('display')
+.classList.remove('hidden')
+
 }
 
-const editBtn=document.getElementById('editBtn');
-const saveBtn=document.getElementById('saveBtn');
-const cancelBtn=document.getElementById('cancelBtn');
+const editBtn=document.getElementById('editBtn')
+const saveBtn=document.getElementById('saveBtn')
+const cancelBtn=document.getElementById('cancelBtn')
 
-editBtn.onclick=startEdit;
-saveBtn.onclick=saveEdit;
-cancelBtn.onclick=stopEdit;
+editBtn.onclick=startEdit
+saveBtn.onclick=saveEdit
+cancelBtn.onclick=stopEdit
 
 document.getElementById('close').onclick=()=>{
-document.getElementById('modal').style.display='none';
-};
+document.getElementById('modal').style.display='none'
+}
 
 window.onclick=(e)=>{
 if(e.target.id==='modal'){
- document.getElementById('modal').style.display='none';
+document.getElementById('modal').style.display='none'
 }
-};
+}
 
-loadData();
+renderCalendar()
+
 </script>
 
 </body>
